@@ -6,7 +6,7 @@ class Cupcake:
 
     #Class attribute
     cache = {} #Dictionary to store all cupcake instances by name
-
+    cls = "cupcake"
 
     def __init__(self, name, flavor, price):
         """Initialize an instance of the class Cupcake"""
@@ -29,7 +29,8 @@ class Cupcake:
 
         
         if self.qty == 0:
-            print("Sorry, these cupcakes are sold out")
+
+            print(f"Sorry, these {self.cls}s are sold out")
             return
 
         if amount > self.qty: 
@@ -86,7 +87,21 @@ if __name__ == '__main__':
     if result.failed == 0:
         print('ALL TESTS PASSED')
 
+#Specs or brownie are almost the same as for cupcake, but flavor is chocolate
 
-
-
+class Brownie(Cupcake):
     
+    cls = "brownie"
+
+    def __init__(self, name, price): #Only need to pass in name and price
+        """Initialize an instance of the class Cupcake"""
+
+        super().__init__(name, "Chocolate", price) #Hard code "Chocolate"
+
+
+    def __repr__(self):
+        """Human-readable printout for debugging."""
+
+        return f'<Brownie name="{self.name}" qty={self.qty}>'
+
+
